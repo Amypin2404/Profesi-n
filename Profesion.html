@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Diseño.css">
+    <title>Generador de Profesión Aleatoria</title>
+    <link rel="icon" href="aprendizaje-y-desarrollo.png" type="image/png">
+    <style>
+        /* Estilos generales para la página */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #57fa5a, #e5ace0); /* Fondo degradado */
+        }
+
+        /* Estilo del contenedor */
+        .container {
+            background-color: rgba(101, 246, 85, 0.77); /* Fondo blanco con transparencia */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* Estilos para los títulos */
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        /* Estilos para los inputs */
+        input, select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 2px solid #61c66d;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Estilo del botón */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #7ebe7d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #00b315;
+        }
+
+        /* Estilos para el resultado */
+        .resultado {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Estilo para la imagen */
+        img {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+            display: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra suave para la imagen */
+        }
+
+        /* Efecto de aparición de la imagen */
+        img.show {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Animación de fade-in para la imagen */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Descubre tu profesión</h2>
+        
+        <label for="nombre">Nombre: </label>
+        <input type="text" id="nombre"
+        placeholder="Ingresa tu nombre">
+
+
+        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fechaNacimiento" required>
+        
+
+        <label for="edad">Edad: </label>
+        <input type="int" id="edad"
+        placeholder="Ingresa tu edad">
+
+
+        <label for="genero">Género:</label>
+        <select id="genero" required>
+            <option value="">Selecciona tu género</option>
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+            <option value="Bisexual">Bisexual</option>
+        </select>
+
+
+        <label for="signo">Signo Zodiacal: </label>
+        <select id="signoz" required>
+            <option value="">Selecciona tu signo zodiacal</option>
+            <option value="aries">Aries</option>
+            <option value="tauro">Tauro</option>
+            <option value="geminis">Geminis</option>
+            <option value="cancer">Cancer</option>
+            <option value="leo">Leo</option>
+            <option value="virgo">Virgo</option>
+            <option value="libra">Libra</option>
+            <option value="escorpio">Escorpio</option>
+            <option value="sagitario">Sagitario</option>
+            <option value="capricornio">Capricornio</option>
+            <option value="acuario">Acuario</option>
+            <option value="piscis">Piscis</option>
+        </select>
+
+
+        <label for="futuro">Futuro: </label>
+        <input type="text" id="futuro"
+        placeholder="Como se ve en el futuro">
+
+
+
+        <button onclick="mostrarProfesion()">Obtener Profesión</button>
+        
+        <div class="resultado" id="resultado"></div>
+        <img id="imagenProfesion" alt="Imagen de la profesión">
+    </div>
+
+    <script>
+        function mostrarProfesion() {
+            const profesiones = [
+                { nombre: "Ingeniero/a", imagen: "https://previews.123rf.com/images/beer5020/beer50201709/beer5020170900017/86214297-multi-%C3%A9tnica-pareja-diversa-de-feliz-ingeniero-civil-trabajando-juntos-en-blueprint-arquitecto-de.jpg" },
+                { nombre: "Doctor/a", imagen: "https://st4.depositphotos.com/12985790/24589/i/450/depositphotos_245896114-stock-photo-laughing-doctors-white-coats-showing.jpg" },
+                { nombre: "Maestro/a", imagen: "https://static.vecteezy.com/system/resources/previews/004/903/346/non_2x/cute-couple-cartoon-of-teachers-vector.jpg" },
+                { nombre: "Abogado/a", imagen: "https://www.alonsoytinoco.com/wp-content/uploads/2021/03/hombreomujer-alonsoytinoco-1170x650.jpg" },
+                { nombre: "Artista", imagen: "https://www.eluniverso.com/resizer/v2/KYALPTAJUZECBADOQ2WXEGNDTY.jpg?auth=e0c5c50e1f88512a3109effae3c0281aae85da4df1a26be4fbc6536e353e2562&width=720&height=540&quality=75&smart=true" },
+                { nombre: "Escritor/a", imagen: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiautJUp7rs9AolzW8K46rn7QGLS8LfO4GuUra9LW7G2NA5gCSIoWgppk3HsPcW2loESU1D0ibRXvjCgSFAwBkWwh9B2lUbf7ySXM_FY9rrEiO5lb5KY9NEDyyesBRUtqEUjX28EFCHsBQc/s1600/Jean+Paul+Sartre+y+Simone+de+Beauvoir.jpg" },
+                { nombre: "Programador/a", imagen: "https://img.freepik.com/fotos-premium/programadores-escribiendo-codigo-vista-angulo-alto-pareja_995162-2057.jpg" },
+                { nombre: "Chef", imagen: "https://previews.123rf.com/images/dolgachov/dolgachov1510/dolgachov151000594/45974622-chefs-o-cocineros-felices-pareja-con-men%C3%BA-y-rodillo-sobre-fondo-beige.jpg" },
+                { nombre: "Arquitecto/a", imagen: "https://img.freepik.com/fotos-premium/concepto-presentacion-arquitectos_23-2147702557.jpg" },
+                { nombre: "Narco/a", imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Pablo_Escobar_Mug.jpg/1200px-Pablo_Escobar_Mug.jpg" },
+                { nombre: "Músico/a", imagen: "https://cdn.pixabay.com/photo/2023/07/15/07/08/people-8128250_1280.jpg" }
+            ];
+            
+            const nombre = document.getElementById('nombre').value;
+            const fechaNacimiento = document.getElementById('fechaNacimiento').value;
+            const edad = document.getElementById('edad').value;
+            const genero = document.getElementById('genero').value;
+            const signo = document.getElementById('signoz').value;
+            const futuro = document.getElementById('futuro').value;
+            const resultado = document.getElementById('resultado');
+            const imagenProfesion = document.getElementById('imagenProfesion');
+            
+            if (fechaNacimiento && genero) {
+                const profesionAleatoria = profesiones[Math.floor(Math.random() * profesiones.length)];
+                resultado.innerHTML = `Tu profesión aleatoria es: ${profesionAleatoria.nombre}`;
+                imagenProfesion.src = profesionAleatoria.imagen;
+                imagenProfesion.classList.add('show');
+            } else {
+                resultado.innerHTML = "Por favor, completa todos los campos.";
+                imagenProfesion.classList.remove('show');
+            }
+        }
+    </script>
+</body>
+</html>
